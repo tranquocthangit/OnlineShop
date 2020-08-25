@@ -23,7 +23,7 @@ namespace OnlineShop.Service
 
         PostCategory GetById(int id);
 
-        void SaveChanges();
+        void Save();
 
     }
 
@@ -63,7 +63,7 @@ namespace OnlineShop.Service
             return _postCategoryRepository.GetSingleById(id);
         }
 
-        public void SaveChanges()
+        public void Save()
         {
             _unitOfWork.Commit();
         }
