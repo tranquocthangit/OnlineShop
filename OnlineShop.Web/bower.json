@@ -1,0 +1,8 @@
+{
+  "name": "myproject",
+  "dependencies": {
+    "jquery": "3.5.1",
+    "angular": "1.8.0",
+    "boostrap": "4.5.2"
+  }
+}
