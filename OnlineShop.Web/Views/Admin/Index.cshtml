@@ -10,10 +10,20 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script src="~/Scripts/plugins/angular/angular.js"></script>
+    <script src="~/Scripts/spa/app.js"></script>
 </head>
 <body>
-    <div> 
-
+    <div ng-controller="myControlller"> 
+        <online-shop-directive></online-shop-directive>
+        <h4>Welcome to admin page</h4>
+        <div>
+            <input type="number" ng-model="number"/>
+            <button ng-click="btnCheckNumber()">Check Number</button>
+        </div>
+        <br />
+        <div>
+            {{message}}
+        </div>
     </div>
 </body>
 </html>
