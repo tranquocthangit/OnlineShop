@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineShop.Model.Models
@@ -18,5 +19,9 @@ namespace OnlineShop.Model.Models
         [MaxLength(50)]
         [Required]
         public string Type { set; get; }
+
+        public virtual IEnumerable<ProductTag> ProductTags { set; get; }
+
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }

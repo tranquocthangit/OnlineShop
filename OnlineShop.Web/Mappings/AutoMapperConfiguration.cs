@@ -15,6 +15,9 @@ namespace OnlineShop.Web.Mappings
             CreateMap<Post, PostViewModel>();
             CreateMap<PostCategory, PostCategoryViewModel>();
             CreateMap<Tag, TagViewModel>();
+            CreateMap<Product,ProductCategoryViewModel>();
+            CreateMap<ProductCategory, ProductCategoryViewModel>();
+            CreateMap<ProductTag, ProductTagViewModel>();
         }
 
         //public static void Configure()

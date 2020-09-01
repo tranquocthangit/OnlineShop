@@ -3,6 +3,8 @@
   "dependencies": {
     "jquery": "3.5.1",
     "angular": "1.8.0",
-    "boostrap": "4.5.2"
+    "boostrap": "4.5.2",
+    "angular-ui-router": "1.0.28",
+    "toastr": "2.1.2"
   }
 }

@@ -77,6 +77,10 @@
     <Compile Include="Migrations\202008260638030_AspnetIdentity.designer.cs">
       <DependentUpon>202008260638030_AspnetIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008280728113_createforeignkey.cs" />
+    <Compile Include="Migrations\202008280728113_createforeignkey.designer.cs">
+      <DependentUpon>202008280728113_createforeignkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008260638030_AspnetIdentity.resx">
       <DependentUpon>202008260638030_AspnetIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008280728113_createforeignkey.resx">
+      <DependentUpon>202008280728113_createforeignkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
