@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,8 +10,10 @@ namespace OnlineShop.Web.Models
     {
         public int ID { set; get; }
 
+        [Required]
         public string Name { set; get; }
 
+        [Required]
         public string Alias { set; get; }
 
         public string Description { set; get; }
@@ -31,6 +34,8 @@ namespace OnlineShop.Web.Models
         public string UpdatedBy { get; set; }
         public string MetaKeyword { get; set; }
         public string MetaDescription { get; set; }
+
+        [Required]
         public bool Status { get; set; }
     }
 }

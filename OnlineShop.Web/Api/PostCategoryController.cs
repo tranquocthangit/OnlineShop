@@ -31,7 +31,6 @@ namespace OnlineShop.Web.Api
                 var listPostCategoryVm = new List<PostCategoryViewModel>();
 
                 AutoMapper.Mapper.Map(listCategory, listPostCategoryVm);
-                //Mapper.Map<List<PostCategoryViewModel>>(listCategory);
 
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
 
