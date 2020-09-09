@@ -81,6 +81,10 @@
     <Compile Include="Migrations\202008280728113_createforeignkey.designer.cs">
       <DependentUpon>202008280728113_createforeignkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009041326096_AddTagField.cs" />
+    <Compile Include="Migrations\202009041326096_AddTagField.designer.cs">
+      <DependentUpon>202009041326096_AddTagField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008280728113_createforeignkey.resx">
       <DependentUpon>202008280728113_createforeignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041326096_AddTagField.resx">
+      <DependentUpon>202009041326096_AddTagField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

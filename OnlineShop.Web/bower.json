@@ -8,6 +8,8 @@
     "toastr": "2.1.2",
     "ngBootbox": "0.2.0",
     "bootbox.js": "bootbox#5.4.0",
-    "ckeditor": "4.14.1"
+    "ckeditor": "4.14.1",
+    "Ionicons": "ionicons#2.0.1",
+    "icheck-bootstrap": "3.0.1"
   }
 }

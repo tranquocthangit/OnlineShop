@@ -62,7 +62,7 @@ namespace OnlineShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var model = _productService.GetById(id);
-                var productVm = new ProductCategoryViewModel();
+                var productVm = new ProductViewModel();
                 AutoMapper.Mapper.Map(model, productVm);
                 HttpResponseMessage responseData = request.CreateResponse(HttpStatusCode.OK, productVm);
                 return responseData;
