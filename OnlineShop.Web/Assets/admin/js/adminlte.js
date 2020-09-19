@@ -497,10 +497,12 @@
     $(window).on('load', function () {
       Layout._jQueryInterface.call($('body'));
     });
-    $(Selector.SIDEBAR + ' a').on('focusin', function () {
+      $(Selector.SIDEBAR + ' a').on('focusin', function () {
+          console.log('focus in');
       $(Selector.MAIN_SIDEBAR).addClass(ClassName.SIDEBAR_FOCUSED);
     });
-    $(Selector.SIDEBAR + ' a').on('focusout', function () {
+      $(Selector.SIDEBAR + ' a').on('focusout', function () {
+          console.log('focus out');
       $(Selector.MAIN_SIDEBAR).removeClass(ClassName.SIDEBAR_FOCUSED);
     });
     /**
@@ -802,7 +804,8 @@
         this._setupListeners();
       };
 
-      _proto.expand = function expand(treeviewMenu, parentLi) {
+        _proto.expand = function expand(treeviewMenu, parentLi) {
+            console.log('expand');
         var _this = this;
 
         var expandedEvent = $.Event(Event.EXPANDED);
@@ -813,7 +816,8 @@
           this.collapse(openTreeview, openMenuLi);
         }
 
-        treeviewMenu.stop().slideDown(this._config.animationSpeed, function () {
+          treeviewMenu.stop().slideDown(this._config.animationSpeed, function () {
+              console.log(parentLi);
           parentLi.addClass(ClassName.OPEN);
           $(_this._element).trigger(expandedEvent);
         });
@@ -824,7 +828,8 @@
       };
 
       _proto.collapse = function collapse(treeviewMenu, parentLi) {
-        var _this2 = this;
+          var _this2 = this;
+          console.log('collapse');
 
         var collapsedEvent = $.Event(Event.COLLAPSED);
         treeviewMenu.stop().slideUp(this._config.animationSpeed, function () {
@@ -835,7 +840,8 @@
         });
       };
 
-      _proto.toggle = function toggle(event) {
+        _proto.toggle = function toggle(event) {
+            console.log('toggle');
         var $relativeTarget = $(event.currentTarget);
         var $parent = $relativeTarget.parent();
         var treeviewMenu = $parent.find('> ' + Selector.TREEVIEW_MENU);
@@ -865,7 +871,8 @@
       _proto._setupListeners = function _setupListeners() {
         var _this3 = this;
 
-        $(document).on('click', this._config.trigger, function (event) {
+          $(document).on('click', this._config.trigger, function (event) {
+            console.log('trigger')
           _this3.toggle(event);
         });
       };
