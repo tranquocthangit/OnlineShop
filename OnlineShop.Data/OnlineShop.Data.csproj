@@ -85,6 +85,14 @@
     <Compile Include="Migrations\202009041326096_AddTagField.designer.cs">
       <DependentUpon>202009041326096_AddTagField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009230304195_AddContentToSlide.cs" />
+    <Compile Include="Migrations\202009230304195_AddContentToSlide.designer.cs">
+      <DependentUpon>202009230304195_AddContentToSlide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010050756551_AddQuantity.cs" />
+    <Compile Include="Migrations\202010050756551_AddQuantity.designer.cs">
+      <DependentUpon>202010050756551_AddQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +144,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009041326096_AddTagField.resx">
       <DependentUpon>202009041326096_AddTagField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009230304195_AddContentToSlide.resx">
+      <DependentUpon>202009230304195_AddContentToSlide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010050756551_AddQuantity.resx">
+      <DependentUpon>202010050756551_AddQuantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

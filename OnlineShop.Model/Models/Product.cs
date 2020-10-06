@@ -49,5 +49,7 @@ namespace OnlineShop.Model.Models
         public virtual ProductCategory ProductCategory { set; get; }
 
         public virtual IEnumerable<ProductTag> ProductTags { set; get; }
+
+        public int Quantity { set; get; }
     }
 }

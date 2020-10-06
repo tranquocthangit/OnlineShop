@@ -1,0 +1,23 @@
+﻿@model IEnumerable<OnlineShop.Web.Models.ProductCategoryViewModel>
+
+<div class="categories animated wow slideInUp" data-wow-delay=".5s">
+    <h3>Danh mục sản phẩm</h3>
+    <ul class="cate">
+        @foreach (var category in Model.Where(x => x.ParentID == null))
+        {
+            var url = "/" + category.Alias + ".pc-" + category.ID + ".html";
+            var childCategories = Model.Where(x => x.ParentID == category.ID);
+            <li><a href="@url">@category.Name</a> <span>(15)</span></li>
+            if (childCategories.Count() > 0)
+            {
+                <ul>
+                    @foreach (var childCategory in childCategories)
+                    {
+                        var childUrl = "/" + childCategory.Alias + ".pc-" + childCategory.ID + ".html";
+                        <li><a href="@childUrl">@childCategory.Name</a> <span>(2)</span></li>
+                    }
+                </ul>
+            }
+        }
+    </ul>
+</div>

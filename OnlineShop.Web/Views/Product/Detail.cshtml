@@ -1,0 +1,279 @@
+﻿@model OnlineShop.Web.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var relatedProducts = (IEnumerable<OnlineShop.Web.Models.ProductViewModel>)ViewBag.RelatedProducts;
+    var moreImages = (List<string>)ViewBag.MoreImages;
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Assets/client/css/flexslider.css" type="text/css" media="screen" />
+}
+
+@section navbarLinks{
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+                <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
+                <li class="active">Chi tiết sản phẩm</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+}
+
+@section jsFooter{
+    <!--flexslider js-->
+    <script defer src="~/Assets/client/js/jquery.flexslider.js"></script>
+    <!---->
+    <!-- zooming-effect -->
+    <script src="~/Assets/client/js/imagezoom.js"></script>
+    <!-- //zooming-effect -->
+    <!-- flixslider -->
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!-- flixslider -->
+}
+
+<!-- single -->
+<div class="single">
+    <div class="container">
+        <div class="col-md-4 products-left">
+            @{Html.RenderAction("category", "home");}
+            <div class="men-position animated wow slideInUp" data-wow-delay=".5s">
+                <a href="single.html"><img src="~/Assets/client/images/29.jpg" alt=" " class="img-responsive" /></a>
+                <div class="men-position-pos">
+                    <h4>Summer collection</h4>
+                    <h5><span>55%</span> Flat Discount</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 single-right">
+            <div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="@Model.Image">
+                            <div class="thumb-image"> <img src="@Model.Image" data-imagezoom="true" class="img-responsive"> </div>
+                        </li>
+                        @if (moreImages.Count > 0)
+                        {
+                            foreach (var image in moreImages)
+                            {
+                                <li data-thumb="@image">
+                                    <div class="thumb-image"> <img src="@image" data-imagezoom="true" class="img-responsive"> </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
+                <h3>@Model.Name</h3>
+                @if (Model.PromotionPrice.HasValue)
+                {
+                    <h4><span class="item_price">@Model.PromotionPrice.Value.ToString("N0")</span></h4>
+                }
+                else
+                {
+                    if (Model.Price == 0)
+                    {
+                        <h4><span class="item_price">Liên hệ</span></h4>
+                    }
+                    else
+                    {
+                        <h4><span class="item_price">@Model.Price.ToString("N0")</span></h4>
+                    }
+                }
+
+                <div class="rating1">
+                    <span class="starRating">
+                        <input id="rating5" type="radio" name="rating" value="5">
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" name="rating" value="4">
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" name="rating" value="3" checked>
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" name="rating" value="2">
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" name="rating" value="1">
+                        <label for="rating1">1</label>
+                    </span>
+                </div>
+                <div class="description">
+                    <h5><i>Mô tả</i></h5>
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+                <div class="color-quality">
+                    <div class="color-quality-left">
+                        <h5>Màu sắc : </h5>
+                        <ul>
+                            <li><a href="#"><span></span>Đỏ</a></li>
+                            <li><a href="#" class="brown"><span></span>Nâu</a></li>
+                            <li><a href="#" class="purple"><span></span>Tím</a></li>
+                            <li><a href="#" class="gray"><span></span>Hồng</a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="occasional">
+                    <h5>Tồn kho: <span style="color: #D8703F">@Model.Quantity.ToString("N0") sản phẩm</span></h5>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="occasion-cart">
+                    <a class="item_add" href="/them-gio-hang/@Model.ID">Thêm vào giỏ hàng </a>
+                </div>
+                <div class="social">
+                    <div class="social-left">
+                        <p>Chia sẻ :</p>
+                    </div>
+                    <div class="social-right">
+                        <ul class="social-icons">
+                            <li><a href="#" class="facebook"></a></li>
+                            <li><a href="#" class="twitter"></a></li>
+                            <li><a href="#" class="g"></a></li>
+                            <li><a href="#" class="instagram"></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="bootstrap-tab animated wow slideInUp" data-wow-delay=".5s">
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Mô tả chi tiết</a></li>
+                        <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Phản hồi</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
+                            <h5>Thông số</h5>
+                            <p>
+                                @Html.Raw(Model.Content)
+                            </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
+                            <div class="bootstrap-tab-text-grids">
+                                <div class="bootstrap-tab-text-grid">
+                                    <div class="bootstrap-tab-text-grid-left">
+                                        <img src="~/Assets/client/images/4.png" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="bootstrap-tab-text-grid-right">
+                                        <ul>
+                                            <li><a href="#">Admin</a></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
+                                        </ul>
+                                        <p>
+                                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+                                            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+                                            vel eum iure reprehenderit.
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="bootstrap-tab-text-grid">
+                                    <div class="bootstrap-tab-text-grid-left">
+                                        <img src="~/Assets/client/images/5.png" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="bootstrap-tab-text-grid-right">
+                                        <ul>
+                                            <li><a href="#">Admin</a></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
+                                        </ul>
+                                        <p>
+                                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+                                            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+                                            vel eum iure reprehenderit.
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="add-review">
+                                    <h4>add a review</h4>
+                                    <form>
+                                        <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                                        <input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                                        <input type="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" required="">
+                                        <textarea type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                                        <input type="submit" value="Send">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- //single -->
+<!-- single-related-products -->
+<div class="single-related-products">
+    <div class="container">
+        <h3 class="animated wow slideInUp" data-wow-delay=".5s">Sản phẩm liên quan</h3>
+        <p class="est animated wow slideInUp" data-wow-delay=".5s">
+            Giày chính hãng giá tốt
+        </p>
+        <div class="new-collections-grids">
+            @foreach (var product in relatedProducts)
+            {
+                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                <div class="col-md-3 new-collections-grid">
+                    <div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".5s">
+                        <div class="new-collections-grid1-image">
+                            <a href="@url" class="product-image"><img src="@product.Image" alt=" " class="img-responsive"></a>
+                            <div class="new-collections-grid1-image-pos">
+                                <a href="@url">Xem nhanh</a>
+                            </div>
+                        </div>
+                        <h4><a href="single.html">@product.Name</a></h4>
+                        <div class="rating">
+                            <div class="rating-left">
+                                <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                            </div>
+                            <div class="rating-left">
+                                <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                            </div>
+                            <div class="rating-left">
+                                <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                            </div>
+                            <div class="rating-left">
+                                <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                            </div>
+                            <div class="rating-left">
+                                <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="new-collections-grid1-left simpleCart_shelfItem">
+                            @if (@product.PromotionPrice.HasValue)
+                            {
+                                <p><i>@product.Price.ToString("N0")</i> <span class="item_price">@product.PromotionPrice.Value.ToString("N0")</span></p>
+                            }
+                            else
+                            {
+                                <p><span class="item_price">@product.Price.ToString("N0")</span></p>
+                            }
+                            <div>
+                                <p><a class="item_add" href="/them-gio-hang/@product.ID">Thêm vào giỏ hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //single-related-products -->

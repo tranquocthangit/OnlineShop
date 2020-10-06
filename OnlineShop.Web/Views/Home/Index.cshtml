@@ -1,0 +1,250 @@
+﻿@model OnlineShop.Web.Models.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<!-- banner -->
+@{ Html.RenderAction("Banner", "Home");}
+<!-- //banner -->
+<!-- banner-bottom -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="banner-bottom-grids">
+            <div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                <div class="grid">
+                    <figure class="effect-julia">
+                        <img src="~/Assets/client/images/4.jpg" alt=" " class="img-responsive" />
+                        <figcaption>
+                            <h3>Best <span>Store</span><i> in online shopping</i></h3>
+                            <div>
+                                <p>Cupidatat non proident, sunt</p>
+                                <p>Officia deserunt mollit anim</p>
+                                <p>Laboris nisi ut aliquip consequat</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".5s">
+                <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="~/Assets/client/images/1.jpg" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="banner-bottom-grid-left1-pos">
+                        <p>Discount 45%</p>
+                    </div>
+                </div>
+                <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="~/Assets/client/images/2.jpg" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="banner-bottom-grid-left1-position">
+                        <div class="banner-bottom-grid-left1-pos1">
+                            <p>Latest New Collections</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                <div class="banner-bottom-grid-left-grid grid-left-grid1">
+                    <div class="banner-bottom-grid-left-grid1">
+                        <img src="~/Assets/client/images/3.jpg" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="grid-left-grid1-pos">
+                        <p>top and classic designs <span>2016 Collection</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //banner-bottom -->
+<!-- collections lastes product -->
+<div class="new-collections">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Sản phẩm mới</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">
+            Các sản phẩm mới của cửa hàng trong tháng
+        </p>
+        <div class="new-collections-grids">
+            @foreach (var product in Model.LastesProducts)
+            {
+                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                <div class="col-md-3 new-collections-grid">
+                    <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                        <div class="new-collections-grid1-image">
+                            <a href="@url" class="product-image"><img src="@product.Image" alt=" " class="img-responsive" /></a>
+                            <div class="new-collections-grid1-image-pos">
+                                <a href="@url">Xem nhanh</a>
+                            </div>
+                        </div>
+                        <h4><a href="@url">@product.Name</a></h4>
+                        <div class="rating">
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/1.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/1.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="new-collections-grid1-left simpleCart_shelfItem">
+                            @if (@product.PromotionPrice.HasValue)
+                            {
+                                <p><i>@product.Price.ToString("N0")</i> <span class="item_price">@product.PromotionPrice.Value.ToString("N0")</span></p>
+                            }
+                            else
+                            {
+                                <p><span class="item_price">@product.Price.ToString("N0")</span></p>
+                            }
+                            <div>
+                                <p><a class="item_add" href="#">Thêm vào giỏ hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //collections -->
+<!-- collections top sale product-->
+<div class="new-collections">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Sản phẩm bán chạy</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">
+            Các sản phẩm bán chạy của cửa hàng trong tháng
+        </p>
+        <div class="new-collections-grids">
+            @foreach (var product in Model.TopSaleProducts)
+            {
+                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                <div class="col-md-3 new-collections-grid">
+                    <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                        <div class="new-collections-grid1-image">
+                            <a href="@url" class="product-image"><img src="@product.Image" alt=" " class="img-responsive" /></a>
+                            <div class="new-collections-grid1-image-pos">
+                                <a href="@url">Xem nhanh</a>
+                            </div>
+                        </div>
+                        <h4><a href="@url">@product.Name</a></h4>
+                        <div class="rating">
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/1.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="rating-left">
+                                <img src="/Assets/client/images/1.png" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="new-collections-grid1-left simpleCart_shelfItem">
+                            @if (@product.PromotionPrice.HasValue)
+                            {
+                                <p><i>@product.Price.ToString("N0")</i> <span class="item_price">@product.PromotionPrice.Value.ToString("N0")</span></p>
+                            }
+                            else
+                            {
+                                <p><span class="item_price">@product.Price.ToString("N0")</span></p>
+                            }
+                            <div>
+                                <p><a class="item_add" href="#">Thêm vào giỏ hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //collections hot  -->
+<!-- new-timer -->
+<div class="timer">
+    <div class="container">
+        <div class="timer-grids">
+            <div class="col-md-8 timer-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                <h3><a href="products.html">sunt in culpa qui officia deserunt mollit</a></h3>
+                <div class="rating">
+                    <div class="rating-left">
+                        <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="rating-left">
+                        <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="rating-left">
+                        <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="rating-left">
+                        <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="rating-left">
+                        <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive" />
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
+                    <p><i>$580</i> <span class="item_price">$550</span></p>
+                    <h4>
+                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                        nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
+                        qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui
+                        dolorem eum fugiat quo voluptas nulla pariatur.
+                    </h4>
+                    <p><a class="item_add timer_add" href="#">add to cart </a></p>
+                </div>
+                <div id="counter"> </div>
+            </div>
+            <div class="col-md-4 timer-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                <div class="timer-grid-right1">
+                    <img src="~/Assets/client/images/17.jpg" alt=" " class="img-responsive" />
+                    <div class="timer-grid-right-pos">
+                        <h4>Special Offer</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //new-timer -->
+<!-- collections-bottom -->
+<div class="collections-bottom">
+    <div class="container">
+        <div class="collections-bottom-grids">
+            <div class="collections-bottom-grid animated wow slideInLeft" data-wow-delay=".5s">
+                <h3>45% Offer For <span>Women & Children's</span></h3>
+            </div>
+        </div>
+        <div class="newsletter animated wow slideInUp" data-wow-delay=".5s">
+            <h3>Newsletter</h3>
+            <p>Join us now to get all news and special offers.</p>
+            <form>
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                <input type="email" value="Enter your email address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email address';}" required="">
+                <input type="submit" value="Join Us">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //collections-bottom -->

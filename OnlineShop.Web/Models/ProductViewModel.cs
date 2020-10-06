@@ -45,5 +45,6 @@ namespace OnlineShop.Web.Models
         public string MetaKeyword { get; set; }
         public string MetaDescription { get; set; }
         public bool Status { get; set; }
+        public int Quantity { set; get; }
     }
 }

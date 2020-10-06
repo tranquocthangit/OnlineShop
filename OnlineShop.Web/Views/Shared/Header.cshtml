@@ -1,0 +1,123 @@
+﻿@model OnlineShop.Web.Models.HomeViewModel
+
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <div class="header-grid">
+            <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                <ul>
+                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="https://www.google.com.vn/">tranquocthang.it@gmail.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>034 6994476</li>
+                    <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="dang-nhap.html">Đăng nhập</a></li>
+                    <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="dang-ky.html">Đăng ký</a></li>
+                </ul>
+            </div>
+            <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                <ul class="social-icons">
+                    <li><a href="#" class="facebook"></a></li>
+                    <li><a href="#" class="twitter"></a></li>
+                    <li><a href="#" class="g"></a></li>
+                    <li><a href="#" class="instagram"></a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="logo-nav">
+            <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+                <h1><a href="/">Times Store<span>Mua sắn online</span></a></h1>
+            </div>
+            <div class="logo-nav-left1">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav">
+                            @foreach (var menu in Model.Menus)
+                            {
+                                var url = menu.URL;
+                                if (!url.Equals("/"))
+                                {
+                                    url += ".html";
+                                }
+
+                                if (menu.URL.Equals("/san-pham"))
+                                {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@menu.Name<b class="caret"></b></a>
+                                        <ul class="dropdown-menu multi-column columns-3">
+                                            <div class="row">
+                                                @foreach (var category in Model.ProductCategories.Where(x => x.ParentID == null))
+                                                {
+                                                    var childCategories = Model.ProductCategories.Where(x => x.ParentID == category.ID);
+                                                    <div class="col-sm-4">
+                                                        <ul class="multi-column-dropdown">
+                                                            <h6>@category.Name</h6>
+                                                            @if (childCategories.Count() > 0)
+                                                            {
+                                                                foreach (var childCategory in childCategories)
+                                                                {
+                                                                    var childUrl = "/" + childCategory.Alias + ".pc-" + childCategory.ID + ".html";
+                                                                    <li><a href="@childUrl">@childCategory.Name</a></li>
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                }
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a href="@url" class="act" target="@menu.Target">@menu.Name</a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="logo-nav-right">
+                <div class="search-box">
+                    <div id="sb-search" class="sb-search">
+                        <form method="get" action="/tim-kiem.html">
+                            <input class="sb-search-input" name="keyword" placeholder="nhập sản phẩm cần tìm kiếm..." type="search" id="txtKeyword">
+                            <input class="sb-search-submit" type="submit" value="">
+                            <span class="sb-icon-search"> </span>
+                        </form>
+                    </div>
+                </div>
+                <!-- search-scripts -->
+                <script src="~/Assets/client/js/classie.js"></script>
+                <script src="~/Assets/client/js/uisearch.js"></script>
+                <script>
+                    new UISearch(document.getElementById('sb-search'));
+                </script>
+                <!-- //search-scripts -->
+            </div>
+            <div class="header-right">
+                <div class="cart box_1">
+                    <a href="checkout.html">
+                        <h3>
+                            <div class="total">
+                                <span>0 VNĐ</span> (<span>0</span> S.phẩm)
+                            </div>
+                            <img src="~/Assets/client/images/bag.png" alt="" />
+                        </h3>
+                    </a>
+                    <p><a href="javascript:;" class="simpleCart_empty">Giỏ hàng trống</a></p>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //header -->

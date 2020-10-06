@@ -11,6 +11,18 @@
 
         $scope.AddProductCategory = AddProductCategory;
         $scope.GetSeoTitle = GetSeoTitle;
+        $scope.ChooseImage = ChooseImage;
+
+        function ChooseImage() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                //load nhanh trong angularjs dùng $apply
+                $scope.$apply(function () {
+                    $scope.productCategory.Image = fileUrl;
+                });
+            }
+            finder.popup();
+        }
 
         function GetSeoTitle() {
             $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);

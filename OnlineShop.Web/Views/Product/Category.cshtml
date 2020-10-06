@@ -1,0 +1,294 @@
+﻿@model OnlineShop.Web.Infrastructure.Core.PaginationSet<OnlineShop.Web.Models.ProductViewModel>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var category = (OnlineShop.Web.Models.ProductCategoryViewModel)ViewBag.Category;
+}
+
+@section header{
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/jquery-ui.css">
+}
+
+@section navbarLinks{
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+                <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
+                <li class="active">Sản phẩm</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+}
+
+@section jsFooter{
+    <script type='text/javascript'>
+        //<![CDATA[
+        $(window).load(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 100000,
+                values: [20000, 80000],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+
+        });//]]>
+    </script>
+    <!---->
+}
+
+<div class="products">
+    <div class="container">
+        <div class="col-md-4 products-left">
+            <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">
+                <h3>Tìm theo giá</h3>
+                <ul class="dropdown-menu1">
+                    <li>
+                        <a href="">
+                            <div id="slider-range"></div>
+                            <input type="text" id="amount" style="border: 0" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            @{Html.RenderAction("Category", "Home");}
+            <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
+                <h3>New Products</h3>
+                <div class="new-products-grids">
+                    <div class="new-products-grid">
+                        <div class="new-products-grid-left">
+                            <a href="single.html"><img src="~/Assets/client/images/6.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="new-products-grid-right">
+                            <h4><a href="single.html">occaecat cupidatat</a></h4>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                <p> <span class="item_price">$180</span><a class="item_add" href="#">add to cart </a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="new-products-grid">
+                        <div class="new-products-grid-left">
+                            <a href="single.html"><img src="~/Assets/client/images/26.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="new-products-grid-right">
+                            <h4><a href="single.html">eum fugiat quo</a></h4>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                <p> <span class="item_price">$250</span><a class="item_add" href="#">add to cart </a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="new-products-grid">
+                        <div class="new-products-grid-left">
+                            <a href="single.html"><img src="~/Assets/client/images/11.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="new-products-grid-right">
+                            <h4><a href="single.html">officia deserunt</a></h4>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                <p> <span class="item_price">$259</span><a class="item_add" href="#">add to cart </a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="men-position animated wow slideInUp" data-wow-delay=".5s">
+                <a href="single.html"><img src="~/Assets/client/images/27.jpg" alt=" " class="img-responsive" /></a>
+                <div class="men-position-pos">
+                    <h4>Summer collection</h4>
+                    <h5><span>55%</span> Flat Discount</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 products-right">
+            <div class="products-right-grid">
+                <div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
+                    <div style="float:right">
+                        Sắp xếp: <a href="?page=@Model.Page&sort=popular">Phổ biến</a>|
+                        <a href="?page=@Model.Page&sort=new">Mới</a>|
+                        <a href="?page=@Model.Page&sort=discount">Khuyến mãi</a>|
+                        <a href="?page=@Model.Page&sort=price">Giá <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="products-right-grids-position animated wow slideInRight" data-wow-delay=".5s">
+                    <img src="~/Assets/client/images/18.jpg" alt=" " class="img-responsive" />
+                    <div class="products-right-grids-position1">
+                        <h4>@category.Name</h4>
+                        <p>
+                            @category.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="products-right-grids-bottom">
+                @if (Model.Count > 0)
+                {
+                    foreach (var product in Model.Items)
+                    {
+                        <div class="col-md-4 products-right-grids-bottom-grid">
+                            <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                                <div class="new-collections-grid1-image">
+                                    <a href="single.html" class="product-image"><img src="@product.Image" alt="@product.Name" class="img-responsive"></a>
+                                    <div class="new-collections-grid1-image-pos products-right-grids-pos">
+                                        <a href="single.html">Xem nhanh</a>
+                                    </div>
+                                </div>
+                                <h4><a href="single.html">@product.Name</a></h4>
+                                <div style="text-align:center">
+                                    <div class="rating" style="display: inline-block">
+                                        <div class="rating-left">
+                                            <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="~/Assets/client/images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="~/Assets/client/images/1.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                                <div class="simpleCart_shelfItem products-right-grid1-add-cart">
+                                    @if (@product.PromotionPrice.HasValue)
+                                    {
+                                        <p><i>@product.Price.ToString("N0")</i> <span class="item_price">@product.PromotionPrice.Value.ToString("N0")</span></p>
+                                    }
+                                    else
+                                    {
+                                        <p><span class="item_price">@product.Price.ToString("N0")</span></p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="clearfix"> </div>
+                }
+                else
+                {
+                    <div>Không có bản ghi nào được tìm thấy</div>
+                }
+            </div>
+            <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+                @if (Model.TotalPages > 1)
+                {
+                    // Create numeric links
+                    var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                    var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+                    <nav>
+                        <ul class="pagination paging">
+                            @if (Model.Page > 1)
+                            {
+                                <li>
+                                    <a href="?page=1" aria-label="First">
+                                        <span aria-hidden="true">&lt;&lt;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?page=@(Model.Page-1)" aria-label="Previous">
+                                        <span aria-hidden="true">&lt;</span>
+                                    </a>
+                                </li>
+                            }
+
+                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                            {
+                                if (Model.Page == i)
+                                {
+                                    <li class="active"><a href="?page=@i" title="Trang @i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="?page=@i" title="Trang @i">@i</a></li>
+                                }
+                            }
+                            @if (Model.Page < Model.TotalPages)
+                            {
+                                <li>
+                                    <a href="?page=@(Model.Page+1)" aria-label="Next">
+                                        <span aria-hidden="true">&gt;</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="?page=@Model.TotalPages" aria-label="Last">
+                                        <span aria-hidden="true">&gt;&gt;</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                }
+            </nav>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

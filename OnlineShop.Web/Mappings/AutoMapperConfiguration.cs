@@ -18,6 +18,9 @@ namespace OnlineShop.Web.Mappings
             CreateMap<Product,ProductCategoryViewModel>();
             CreateMap<ProductCategory, ProductCategoryViewModel>();
             CreateMap<ProductTag, ProductTagViewModel>();
+            CreateMap<MenuGroup, MenuGroupViewModel>();
+            CreateMap<Menu, MenuViewModel>();
+            //CreateMap<Slide, SlideViewModel>();
         }
 
         //public static void Configure()
